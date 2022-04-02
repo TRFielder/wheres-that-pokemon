@@ -1,8 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom"
 import './index.css';
 import App from './App';
 import { Helmet, HelmetProvider } from "react-helmet-async";
+
 
 ReactDOM.render(
   <React.StrictMode>
