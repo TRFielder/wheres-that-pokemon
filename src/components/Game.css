@@ -1,0 +1,45 @@
+#game-image {
+  border-radius: 15px;
+}
+
+.Game {
+  position: relative;
+  width: 1440px;
+  margin: 0 auto;
+}
+
+.cleffa-location {
+  border: 2px solid white;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  left: 262px;
+  top: 268px;
+}
+
+.graveler-location {
+  border: 2px solid white;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  left: 967px;
+  top: 580px;
+}
+
+.trubbish-location {
+  border: 2px solid white;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  left: 865px;
+  top: 495px;
+}
+
+.togepi-location {
+  border: 2px solid white;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  left: 700px;
+  top: 270px;
+}

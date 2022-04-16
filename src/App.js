@@ -1,4 +1,4 @@
-import Game from "./components/game.js"
+import Game from "./components/Game.js"
 
 function App() {
   
