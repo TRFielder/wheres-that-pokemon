@@ -1,7 +1,4 @@
-.App {
-  text-align: center;
-}
-
-.game-image {
-  width: 100vw;
+#game-image {
+  width: 80vw;
+  border-radius: 15px;
 }
