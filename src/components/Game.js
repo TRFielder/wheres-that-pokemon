@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import './Game.css';
+import '../styles/Game.css';
 //import pokehunt_1 from "../assets/images/pokehunt-1.png"
 import pokehunt_2 from "../assets/images/pokehunt-2.png"
+import * as firebase from "../firebaseFuncs.js"
 
 function Game() {
     const [clickedPos, setClickedPos] = useState({
@@ -21,15 +22,14 @@ function Game() {
 
             const x = event.clientX - rect.left;
             const y = event.clientY - rect.top;
+            firebase.getCoordinates();
 
             setClickedPos({
                 x: x,
                 y: y
             })
         }
-        
-    });
-
+    }, []);
 
     return (
         <>
