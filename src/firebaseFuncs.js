@@ -1,5 +1,5 @@
 import "./firebase-config.js";
-import { initializeApp } from "firebase/app";
+import Character from "./characters.js"
 
 import {
     getFirestore,
@@ -9,14 +9,27 @@ import {
     getDocs
 } from "firebase/firestore";
 
-async function getCoordinates() {
-    const coordsQuery = query(collection(getFirestore(), "pokemon-coordinates"), where("pokemon", "==", "togepi"));
+async function getCoordinates(pokename) {
+    const coordsQuery = query(collection(getFirestore(), "pokemon-coordinates"), where("pokemon", "==", `${pokename}`));
 
     const querySnapshot = await getDocs(coordsQuery);
-    querySnapshot.forEach((doc) => {
-        console.table(doc.data());
-    })
-}
+    if(querySnapshot.empty) {
+        console.log("There is no entry against this name in the database");
+        return;
+    }
 
+    let rv;
+    querySnapshot.forEach((doc) => {
+
+        rv = {
+            xmin: doc.data().xmin,
+            xmax: doc.data().xmax,
+            ymin: doc.data().ymin,
+            ymax: doc.data().ymax
+        }
+    })
+    return rv;
+
+}
 
 export {getCoordinates};

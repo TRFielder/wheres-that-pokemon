@@ -22,7 +22,11 @@ function Game() {
 
             const x = event.clientX - rect.left;
             const y = event.clientY - rect.top;
-            firebase.getCoordinates();
+            firebase.getCoordinates("trubbish").then(
+                (data) => {
+                    console.table(data)
+                }
+            );
 
             setClickedPos({
                 x: x,
