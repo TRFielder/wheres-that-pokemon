@@ -1,0 +1,16 @@
+#selectionMenu {
+    z-index: 2;
+    max-width: 150px;
+    border: 2px solid black;
+    background-color: black;
+}
+
+#pokemonList li {
+    max-width: 100px;
+    display: flex;
+}
+
+#pokemonList li img {
+    max-width: inherit;
+}
+

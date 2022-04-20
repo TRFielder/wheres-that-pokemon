@@ -3,6 +3,8 @@ import '../styles/Game.css';
 //import pokehunt_1 from "../assets/images/pokehunt-1.png"
 import pokehunt_2 from "../assets/images/pokehunt-2.png"
 import * as firebase from "../firebaseFuncs.js"
+import Character from "../characters";
+import Selection from "./Selection.js"
 
 function Game() {
     const [clickedPos, setClickedPos] = useState({
@@ -22,9 +24,13 @@ function Game() {
 
             const x = event.clientX - rect.left;
             const y = event.clientY - rect.top;
-            firebase.getCoordinates("trubbish").then(
+            //Call function to place targeting box
+            placeBox(x, y);
+            //
+            let pokemon="trubbish"
+            firebase.getCoordinates(pokemon).then(
                 (data) => {
-                    console.table(data)
+                    checkLocations(x, y, data)
                 }
             );
 
@@ -35,16 +41,51 @@ function Game() {
         }
     }, []);
 
+    const placeBox = (x, y) => {
+        //Remove existing circle if there is one
+        let oldBox = document.getElementById("selection");
+        if(typeof(oldBox) != "undefined" && oldBox != null){
+            oldBox.remove();
+        }
+
+        const owningFragment = document.getElementById("Game");
+        //Subtract radius from (x,y) to center the selection circle over the cursor
+        const radius = 18;
+
+        const selection = document.createElement("div");
+        selection.className = "selected-location";
+        selection.id = "selection";
+        selection.style.left = `${x-radius}px`;
+        selection.style.top = `${y-radius}px`;
+        owningFragment.appendChild(selection);
+    }
+
+    const checkLocations = (x, y, actualLoc) => {
+        let selectedChar = new Character(actualLoc.xmin,
+                                        actualLoc.xmax, 
+                                        actualLoc.ymin,
+                                        actualLoc.ymax);
+
+            if(selectedChar.checkIfValidX(x) && selectedChar.checkIfValidY(y)) {
+                console.log("You found the pokemon!");
+                return true;
+            }
+            else {
+                console.log("nuh-uh")
+                return false;
+            }
+    }
+
     return (
         <>
-            <p>You clicked on {clickedPos.x}, {clickedPos.y} </p>
-            <div className="Game">
+            <div id="Game">
             <img src={pokehunt_2} alt="Many pokemon in a Where's Wally style" id="game-image"></img>
             <div className ="cleffa-location"></div>
             <div className ="graveler-location"></div>
             <div className ="trubbish-location"></div>
             <div className ="togepi-location"></div>
             </div>
+            <Selection />
         </>
     );
 }

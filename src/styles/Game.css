@@ -2,10 +2,19 @@
   border-radius: 15px;
 }
 
-.Game {
+#Game {
   position: relative;
   width: 1440px;
-  margin: 0 auto;
+  margin: 1rem auto;
+}
+
+.selected-location {
+  pointer-events: none;
+  border: 2px solid white;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  border-radius: 50%;
 }
 
 .cleffa-location {
@@ -16,6 +25,7 @@
   position: absolute;
   left: 262px;
   top: 268px;
+  border-radius: 50%;
 }
 
 .graveler-location {
@@ -26,6 +36,7 @@
   position: absolute;
   left: 967px;
   top: 580px;
+  border-radius: 50%;
 }
 
 .trubbish-location {
@@ -36,6 +47,7 @@
   position: absolute;
   left: 865px;
   top: 495px;
+  border-radius: 50%;
 }
 
 .togepi-location {
@@ -46,4 +58,5 @@
   position: absolute;
   left: 700px;
   top: 270px;
+  border-radius: 50%;
 }
