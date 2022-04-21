@@ -7,3 +7,7 @@ The app will use React  and [Firebase](https://firebase.google.com/)
 ## The objective
 
 Find all the characters presented to you and save your name (and score) on the global leaderboard.
+
+## Live Demo
+
+Try the app out [here](http://trfielder.github.io/wheres-that-pokemon)
