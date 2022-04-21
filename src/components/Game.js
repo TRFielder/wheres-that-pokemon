@@ -1,16 +1,21 @@
 import { useState, useEffect } from "react";
 import '../styles/Game.css';
-//import pokehunt_1 from "../assets/images/pokehunt-1.png"
 import pokehunt_2 from "../assets/images/pokehunt-2.png"
 import * as firebase from "../firebaseFuncs.js"
 import Character from "../characters";
 import Selection from "./Selection.js"
 
 function Game() {
-    const [clickedPos, setClickedPos] = useState({
-        x: 0,
-        y: 0
-    })
+    const [isMenuVisible, setMenuVisible] = useState(false);
+    const [foundChars, setFoundChars] = useState({
+                                                    cleffa: false,
+                                                    graveler: false,
+                                                    togepi: false,
+                                                    trubbish: false
+                                                })
+
+    const [{x, y}, setCoordinates] = useState({x:0,
+                                               y:0});
 
 
     useEffect(() => {
@@ -27,19 +32,24 @@ function Game() {
             //Call function to place targeting box
             placeBox(x, y);
             //
-            let pokemon="trubbish"
+            let pokemon = selectPokemon()
             firebase.getCoordinates(pokemon).then(
                 (data) => {
                     checkLocations(x, y, data)
                 }
             );
-
-            setClickedPos({
-                x: x,
-                y: y
-            })
+            setMenuVisible(true)
+            setCoordinates({x: x, y: y});
         }
     }, []);
+
+    const toggleMenu = () => {
+        setMenuVisible(!isMenuVisible);
+    }
+
+    const selectPokemon = () => {
+        return "trubbish";
+    }
 
     const placeBox = (x, y) => {
         //Remove existing circle if there is one
@@ -67,11 +77,9 @@ function Game() {
                                         actualLoc.ymax);
 
             if(selectedChar.checkIfValidX(x) && selectedChar.checkIfValidY(y)) {
-                console.log("You found the pokemon!");
                 return true;
             }
             else {
-                console.log("nuh-uh")
                 return false;
             }
     }
@@ -84,8 +92,9 @@ function Game() {
             <div className ="graveler-location"></div>
             <div className ="trubbish-location"></div>
             <div className ="togepi-location"></div>
+            <Selection visible={isMenuVisible} toggleMenu={toggleMenu} x={x} y={y} visibleChars={foundChars}/>
             </div>
-            <Selection />
+            
         </>
     );
 }

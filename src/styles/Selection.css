@@ -1,8 +1,10 @@
 #selectionMenu {
-    z-index: 2;
+    z-index: 20;
     max-width: 150px;
-    border: 2px solid black;
+    border: 2px solid white;
+    border-radius: 10px;
     background-color: black;
+    position: absolute;
 }
 
 #pokemonList li {
