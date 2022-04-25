@@ -5,7 +5,9 @@ function Selection(props) {
     //Pokemon are: Trubbish, Cleffa, Graveler, Togepi
 
     const selectCharacter = (char) => {
-        console.log(char);
+        //Checks if position is valid, if returns true then mark the pokemon as found
+        props.markAsFound(char);
+
         props.toggleMenu()        
     }
 
@@ -29,16 +31,16 @@ function Selection(props) {
             <div id="selectionMenu" style={position}>
                 <ul id="pokemonList">
                     <li>
-                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/568.png" style={charFound("trubbish")} alt="Trubbish official art" onClick={() => selectCharacter("Trubbish")}></img>
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/568.png" style={charFound("trubbish")} alt="Trubbish official art" onClick={() => selectCharacter("trubbish")}></img>
                     </li>
                     <li>
-                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/173.png" style={charFound("cleffa")} alt="Cleffa official art" onClick={() => selectCharacter("Cleffa")}></img>
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/173.png" style={charFound("cleffa")} alt="Cleffa official art" onClick={() => selectCharacter("cleffa")}></img>
                     </li>
                     <li>
-                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/75.png" style={charFound("graveler")} alt="Graveler official art" onClick={() => selectCharacter("Graveler")}></img>
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/75.png" style={charFound("graveler")} alt="Graveler official art" onClick={() => selectCharacter("graveler")}></img>
                     </li>
                     <li>
-                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/175.png" style={charFound("togepi")} alt="Togepi official art" onClick={() => selectCharacter("Togepi")}></img>
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/175.png" style={charFound("togepi")} alt="Togepi official art" onClick={() => selectCharacter("togepi")}></img>
                     </li>
                 </ul>
             </div>

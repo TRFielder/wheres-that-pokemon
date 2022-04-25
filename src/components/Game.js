@@ -8,10 +8,10 @@ import Selection from "./Selection.js"
 function Game() {
     const [isMenuVisible, setMenuVisible] = useState(false);
     const [foundChars, setFoundChars] = useState({
-                                                    cleffa: false,
-                                                    graveler: false,
-                                                    togepi: false,
-                                                    trubbish: false
+                                                    "cleffa": false,
+                                                    "graveler": false,
+                                                    "togepi": false,
+                                                    "trubbish": false
                                                 })
 
     const [{x, y}, setCoordinates] = useState({x:0,
@@ -31,13 +31,12 @@ function Game() {
             const y = event.clientY - rect.top;
             //Call function to place targeting box
             placeBox(x, y);
-            //
-            let pokemon = selectPokemon()
-            firebase.getCoordinates(pokemon).then(
+
+           /* firebase.getCoordinates(pokemon).then(
                 (data) => {
                     checkLocations(x, y, data)
                 }
-            );
+            );*/
             setMenuVisible(true)
             setCoordinates({x: x, y: y});
         }
@@ -45,10 +44,6 @@ function Game() {
 
     const toggleMenu = () => {
         setMenuVisible(!isMenuVisible);
-    }
-
-    const selectPokemon = () => {
-        return "trubbish";
     }
 
     const placeBox = (x, y) => {
@@ -70,18 +65,38 @@ function Game() {
         owningFragment.appendChild(selection);
     }
 
-    const checkLocations = (x, y, actualLoc) => {
-        let selectedChar = new Character(actualLoc.xmin,
-                                        actualLoc.xmax, 
-                                        actualLoc.ymin,
-                                        actualLoc.ymax);
+    const checkLocations = async (x, y, poke) => {
+        console.log(`The pokemon to look up is ${poke}`)
 
-            if(selectedChar.checkIfValidX(x) && selectedChar.checkIfValidY(y)) {
-                return true;
+        return (firebase.getCoordinates(poke).then(
+            data => {
+                let selectedChar = new Character(data.xmin,
+                                                data.xmax,
+                                                data.ymin,
+                                                data.ymax);
+
+                if(selectedChar.checkIfValidX(x) && selectedChar.checkIfValidY(y)) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
             }
-            else {
-                return false;
+        ))
+    }
+
+    const markAsFound = (poke) => {
+
+        checkLocations(x,y,poke).then( isValid => {
+            if(!foundChars[poke] && isValid) {
+                setFoundChars(prevState => ({
+                    ...prevState,
+                    [poke]: true
+                }))
             }
+        });
+
+        
     }
 
     return (
@@ -92,7 +107,7 @@ function Game() {
             <div className ="graveler-location"></div>
             <div className ="trubbish-location"></div>
             <div className ="togepi-location"></div>
-            <Selection visible={isMenuVisible} toggleMenu={toggleMenu} x={x} y={y} visibleChars={foundChars}/>
+            <Selection visible={isMenuVisible} toggleMenu={toggleMenu} x={x} y={y} visibleChars={foundChars} markAsFound={markAsFound} checkLocations={checkLocations}/>
             </div>
             
         </>
