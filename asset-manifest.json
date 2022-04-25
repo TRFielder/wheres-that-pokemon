@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/wheres-that-pokemon/static/css/main.a2cb485a.css",
-    "main.js": "/wheres-that-pokemon/static/js/main.94b2ca43.js",
+    "main.js": "/wheres-that-pokemon/static/js/main.d2584c53.js",
     "static/media/pokehunt-2.png": "/wheres-that-pokemon/static/media/pokehunt-2.a9c8680771baf89b435d.png",
     "index.html": "/wheres-that-pokemon/index.html",
     "main.a2cb485a.css.map": "/wheres-that-pokemon/static/css/main.a2cb485a.css.map",
-    "main.94b2ca43.js.map": "/wheres-that-pokemon/static/js/main.94b2ca43.js.map"
+    "main.d2584c53.js.map": "/wheres-that-pokemon/static/js/main.d2584c53.js.map"
   },
   "entrypoints": [
     "static/css/main.a2cb485a.css",
-    "static/js/main.94b2ca43.js"
+    "static/js/main.d2584c53.js"
   ]
 }
