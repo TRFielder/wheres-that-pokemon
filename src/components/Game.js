@@ -17,6 +17,8 @@ function Game() {
     const [{x, y}, setCoordinates] = useState({x:0,
                                                y:0});
 
+    const [win, setWin] = useState(false);
+
 
     useEffect(() => {
         const image = document.getElementById("game-image");
@@ -41,6 +43,16 @@ function Game() {
             setCoordinates({x: x, y: y});
         }
     }, []);
+
+    useEffect(() => {
+        console.log("State updated!")
+        if(Object.values(foundChars).every(
+            value => value === true
+        )){
+            console.log("All found, you win")
+            setWin(true);
+        }
+    },[foundChars])
 
     const toggleMenu = () => {
         setMenuVisible(!isMenuVisible);
@@ -94,22 +106,21 @@ function Game() {
                     [poke]: true
                 }))
             }
-        });
-
-        
+        });  
     }
 
     return (
         <>
-            <div id="Game">
+        {win
+        ?   "YOU WON"  
+        :    <div id="Game">
             <img src={pokehunt_2} alt="Many pokemon in a Where's Wally style" id="game-image"></img>
             <div className ="cleffa-location"></div>
             <div className ="graveler-location"></div>
             <div className ="trubbish-location"></div>
             <div className ="togepi-location"></div>
             <Selection visible={isMenuVisible} toggleMenu={toggleMenu} x={x} y={y} visibleChars={foundChars} markAsFound={markAsFound} checkLocations={checkLocations}/>
-            </div>
-            
+            </div>}            
         </>
     );
 }
