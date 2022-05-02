@@ -1,14 +1,15 @@
 {
   "files": {
-    "main.css": "/wheres-that-pokemon/static/css/main.a2cb485a.css",
-    "main.js": "/wheres-that-pokemon/static/js/main.d2584c53.js",
+    "main.css": "/wheres-that-pokemon/static/css/main.2a363d12.css",
+    "main.js": "/wheres-that-pokemon/static/js/main.80e4ff16.js",
     "static/media/pokehunt-2.png": "/wheres-that-pokemon/static/media/pokehunt-2.a9c8680771baf89b435d.png",
+    "static/media/Ball_icon.svg": "/wheres-that-pokemon/static/media/Ball_icon.0ae55d07699367fd3b44.svg",
     "index.html": "/wheres-that-pokemon/index.html",
-    "main.a2cb485a.css.map": "/wheres-that-pokemon/static/css/main.a2cb485a.css.map",
-    "main.d2584c53.js.map": "/wheres-that-pokemon/static/js/main.d2584c53.js.map"
+    "main.2a363d12.css.map": "/wheres-that-pokemon/static/css/main.2a363d12.css.map",
+    "main.80e4ff16.js.map": "/wheres-that-pokemon/static/js/main.80e4ff16.js.map"
   },
   "entrypoints": [
-    "static/css/main.a2cb485a.css",
-    "static/js/main.d2584c53.js"
+    "static/css/main.2a363d12.css",
+    "static/js/main.80e4ff16.js"
   ]
 }
