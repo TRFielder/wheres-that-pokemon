@@ -60,3 +60,36 @@
   top: 270px;
   border-radius: 50%;
 }
+
+#beginGameBtn {
+  cursor: pointer;
+  border: none;
+  width: 150px;
+  height: 150px;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 24px;
+  margin: 20% auto;
+  border-radius: 50%;
+  background: url("../assets/images/Ball_icon.svg");
+  background-size: cover;
+}
+
+#beginGameBtn:active {
+  box-shadow: 0px 0px 20px #4b4a4a;
+}
+
+#beginGameBtn.spin {
+  animation: button-loading-spin 1s ease infinite;
+}
+
+@keyframes button-loading-spin {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}

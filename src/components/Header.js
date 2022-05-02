@@ -8,7 +8,9 @@ const Header = (props) => {
                     <div className="logoContainer">
                         <h1>{props.name}</h1>
                     </div>
-
+                {props.showRestart
+                ? <button id="restartBtn" onClick={() => props.restartGame()}>Restart</button>
+                : <></>}
                 </div>
             </div>
         )
