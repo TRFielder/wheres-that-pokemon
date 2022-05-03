@@ -32,7 +32,25 @@ function App() {
         ? <>
             <Game startTime={time} />
           </>
-        : <button id="beginGameBtn" onClick={() => beginGameClicked()}></button>
+        : <>
+              <div id="selectionMenu" className="beforeGame">
+                <ul id="pokemonList">
+                    <li>
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/568.png" alt="Trubbish official art"></img>
+                    </li>
+                    <li>
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/173.png" alt="Cleffa official art"></img>
+                    </li>
+                    <li>
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/75.png" alt="Graveler official art"></img>
+                    </li>
+                    <li>
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/175.png" alt="Togepi official art"></img>
+                    </li>
+                </ul>
+              </div>
+          <button id="beginGameBtn" onClick={() => beginGameClicked()}></button>
+        </>
       }
 
     </div>

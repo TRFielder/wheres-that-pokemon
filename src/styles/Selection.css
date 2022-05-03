@@ -7,6 +7,10 @@
     position: absolute;
 }
 
+#selectionMenu.beforeGame {
+    left: 75%;
+}
+
 #pokemonList li {
     max-width: 100px;
     display: flex;
@@ -15,4 +19,3 @@
 #pokemonList li img {
     max-width: inherit;
 }
-

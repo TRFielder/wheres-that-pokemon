@@ -17,50 +17,6 @@
   border-radius: 50%;
 }
 
-.cleffa-location {
-  pointer-events: none;
-  border: 2px solid white;
-  width: 35px;
-  height: 35px;
-  position: absolute;
-  left: 262px;
-  top: 268px;
-  border-radius: 50%;
-}
-
-.graveler-location {
-  pointer-events: none;
-  border: 2px solid white;
-  width: 35px;
-  height: 35px;
-  position: absolute;
-  left: 967px;
-  top: 580px;
-  border-radius: 50%;
-}
-
-.trubbish-location {
-  pointer-events: none;
-  border: 2px solid white;
-  width: 35px;
-  height: 35px;
-  position: absolute;
-  left: 865px;
-  top: 495px;
-  border-radius: 50%;
-}
-
-.togepi-location {
-  pointer-events: none;
-  border: 2px solid white;
-  width: 35px;
-  height: 35px;
-  position: absolute;
-  left: 700px;
-  top: 270px;
-  border-radius: 50%;
-}
-
 #beginGameBtn {
   cursor: pointer;
   border: none;

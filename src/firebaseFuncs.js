@@ -5,9 +5,11 @@ import {
     collection,
     query,
     where,
-    doc,
+    orderBy,
+    limit,
     addDoc,
-    getDocs
+    getDocs,
+    onSnapshot
 } from "firebase/firestore";
 
 async function getCoordinates(pokename) {
@@ -52,8 +54,21 @@ async function uploadScore(name, time) {
     
 }
 
+async function loadScoreboard() {
+    const topTenQuery = query(collection(getFirestore(), "scoreboard"), orderBy("time", "asc"), limit(10));
+
+    let scoreBoard = [];
+    //Start listening to the query
+    const querySnapshot = await getDocs(topTenQuery);
+    querySnapshot.forEach((doc => {
+        scoreBoard.push(doc.data());
+    }));
+    return scoreBoard;
+}
+
 export {
     getCoordinates,
     getTimestamp,
-    uploadScore
+    uploadScore,
+    loadScoreboard
 };

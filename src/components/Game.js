@@ -116,10 +116,6 @@ const Game = (props) => {
         ?   <ScoreCollection startTime={props.startTime}/>  
         :    <div id="Game">
             <img src={pokehunt_2} alt="Many pokemon in a Where's Wally style" id="game-image"></img>
-            <div className ="cleffa-location"></div>
-            <div className ="graveler-location"></div>
-            <div className ="trubbish-location"></div>
-            <div className ="togepi-location"></div>
             <Selection visible={isMenuVisible} toggleMenu={toggleMenu} x={x} y={y} visibleChars={foundChars} markAsFound={markAsFound} checkLocations={checkLocations}/>
             </div>}            
         </>

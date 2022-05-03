@@ -5,6 +5,8 @@ import * as firebase from "../firebaseFuncs.js"
 const ScoreCollection = (props) => {
     const [name, setName] = useState("");
     const [score, setScore] = useState();
+    const [scoreBoard, setScoreBoard] = useState([]);
+    const [form, setForm] = useState(true);
 
     useEffect(() => {
         firebase.getTimestamp().then(result => {
@@ -24,16 +26,53 @@ const ScoreCollection = (props) => {
         e.preventDefault();
         console.log("A name was submitted: " + name)
         firebase.uploadScore(name, score);
+        firebase.loadScoreboard().then(result => {
+            displayScores(result)
+        });
+    }
+
+    const displayScores = (scores) => {
+        setScoreBoard(
+            [...scores]
+        )
+        setForm(false);
     }
     
     return(
-        <form onSubmit={handleSubmit}>
-            <label>
-                Name:
-                <input type="text" value={name} onChange={handleChange}/>
-            </label>
-            <input id="submitBtn" type="submit" value="Submit"/>
-        </form>
+        <>
+            {form === true
+            ? <form onSubmit={handleSubmit}>
+                <label>
+                    Name:
+                    <input type="text" value={name} onChange={handleChange}/>
+                </label>
+                <input id="submitBtn" type="submit" value="Submit"/>
+            </form>
+            : ""}
+
+            {/*Do not show the scoreboard until a score has been submitted and the scoreboard acquired from cloud FireStore*/}
+            
+            {(Array.isArray(scoreBoard) && scoreBoard.length)
+            ? <div className="scoreboard">
+                <table>
+                    <thead>
+                        <th>Name</th>
+                        <th>Score</th>
+                    </thead>
+                    <tbody>
+                    {scoreBoard.map(score => {
+                        return(<tr>
+                            <td>{score.name}</td>
+                            <td>{score.time}</td>
+                        </tr>
+                        )
+                    })}
+                    </tbody>
+                </table>
+            </div>
+            : ""
+                }
+        </>
     )
 }
 
