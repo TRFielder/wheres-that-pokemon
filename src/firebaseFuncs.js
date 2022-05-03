@@ -1,5 +1,4 @@
 import "./firebase-config.js";
-import Character from "./characters.js"
 
 import {
     getFirestore,
@@ -32,4 +31,11 @@ async function getCoordinates(pokename) {
 
 }
 
-export {getCoordinates};
+async function getTimestamp() {
+    return(new Date());
+}
+
+export {
+    getCoordinates,
+    getTimestamp
+};

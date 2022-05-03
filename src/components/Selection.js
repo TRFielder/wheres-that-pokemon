@@ -8,7 +8,7 @@ function Selection(props) {
         //Checks if position is valid, if returns true then mark the pokemon as found
         props.markAsFound(char);
 
-        props.toggleMenu()        
+        props.toggleMenu();
     }
 
     const position = {

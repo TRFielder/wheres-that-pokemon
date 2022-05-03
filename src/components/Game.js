@@ -4,8 +4,9 @@ import pokehunt_2 from "../assets/images/pokehunt-2.png"
 import * as firebase from "../firebaseFuncs.js"
 import Character from "../characters";
 import Selection from "./Selection.js"
+import ScoreCollection from "./ScoreCollection";
 
-function Game() {
+const Game = (props) => {
     const [isMenuVisible, setMenuVisible] = useState(false);
     const [foundChars, setFoundChars] = useState({
                                                     "cleffa": false,
@@ -112,7 +113,7 @@ function Game() {
     return (
         <>
         {win
-        ?   "YOU WON"  
+        ?   <ScoreCollection startTime={props.startTime}/>  
         :    <div id="Game">
             <img src={pokehunt_2} alt="Many pokemon in a Where's Wally style" id="game-image"></img>
             <div className ="cleffa-location"></div>
