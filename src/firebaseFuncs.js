@@ -5,6 +5,8 @@ import {
     collection,
     query,
     where,
+    doc,
+    addDoc,
     getDocs
 } from "firebase/firestore";
 
@@ -35,7 +37,23 @@ async function getTimestamp() {
     return(new Date());
 }
 
+async function uploadScore(name, time) {
+    const data = {
+        name: name,
+        time: time
+    }
+
+    try {
+        await addDoc(collection(getFirestore(), "scoreboard"), data);
+    }
+    catch(error) {
+        console.error("Error writing score to Firebase Database", error);
+    }
+    
+}
+
 export {
     getCoordinates,
-    getTimestamp
+    getTimestamp,
+    uploadScore
 };

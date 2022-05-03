@@ -23,7 +23,7 @@ const ScoreCollection = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("A name was submitted: " + name)
-        //firebase function to submit score goes here
+        firebase.uploadScore(name, score);
     }
     
     return(
