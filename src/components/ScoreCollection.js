@@ -51,9 +51,10 @@ const ScoreCollection = (props) => {
             : ""}
 
             {/*Do not show the scoreboard until a score has been submitted and the scoreboard acquired from cloud FireStore*/}
-            
+
             {(Array.isArray(scoreBoard) && scoreBoard.length)
             ? <div className="scoreboard">
+                <h1>Global Leaderboard</h1>
                 <table>
                     <thead>
                         <th>Name</th>

@@ -49,7 +49,11 @@ function App() {
                     </li>
                 </ul>
               </div>
-          <button id="beginGameBtn" onClick={() => beginGameClicked()}></button>
+          <div className="instruction-wrapper">
+            <button id="beginGameBtn" onClick={() => beginGameClicked()}></button>
+            <p>Find the Pokémon shown in the box to the right. Click on the pokéball to get started</p>
+            <p>Just click on the image to see the list of pokémon again, and see if you can find all 4!</p>
+          </div>
         </>
       }
 

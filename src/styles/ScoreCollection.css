@@ -25,4 +25,13 @@ input {
     border-radius: 15px;
     margin-top: 5%;
     padding: 10px;
+
+}
+
+.scoreboard table {
+    margin: 0 auto;
+}
+
+.scoreboard td {
+    padding: 0 5px;
 }

@@ -10,11 +10,15 @@
 
 .selected-location {
   pointer-events: none;
-  border: 2px solid white;
+  border: 3px solid white;
   width: 35px;
   height: 35px;
   position: absolute;
   border-radius: 50%;
+}
+
+.instruction-wrapper {
+  margin: 15% auto;
 }
 
 #beginGameBtn {
@@ -27,7 +31,6 @@
   text-align: center;
   text-decoration: none;
   font-size: 24px;
-  margin: 20% auto;
   border-radius: 50%;
   background: url("../assets/images/Ball_icon.png");
   background-size: cover;
